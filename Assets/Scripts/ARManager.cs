@@ -1,48 +1,82 @@
+
 using UnityEngine;
-using System.Collections.Generic;
+using System.Collections;
+using UnityEngine.XR.ARFoundation;
+using UnityEngine.XR.ARSubsystems;
 
 public class ARManager : MonoBehaviour
 {
     public static ARManager Singleton;
-    public Camera MainCamera;
+
+    public ARPlaneManager PlaneManager;
     public GameObject PrefabToInstantiate;
-    public bool ShowPlanes = true;
-    public List<PlaneVisibilityBehaviour> CreatedPlanes = new List<PlaneVisibilityBehaviour>();
-    void OnEnable()
+
+    public int NumberOfNotes = 5;
+
+    public float SpawnRadius = 2f;
+    public float MinHeight = 0.5f;
+    public float MaxHeight = 1.5f;
+
+    private bool NotesSpawned = false;
+
+    void Awake()
     {
-        if (Singleton!= null)
+        if (Singleton != null && Singleton != this)
         {
-            Destroy(this);
+            Destroy(gameObject);
+            return;
         }
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
-    {
-        
+
+        Singleton = this;
     }
 
-    // Update is called once per frame
     void Update()
     {
-     
-   
-        if (Input.GetMouseButtonDown(0))
+        if (!NotesSpawned && PlaneManager != null)
         {
-            RaycastHit hit;
-            Ray ray = MainCamera.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hit))
+            foreach (ARPlane plane in PlaneManager.trackables)
             {
-                Instantiate(PrefabToInstantiate, hit.point, Quaternion.identity);
+                if (plane.trackingState == TrackingState.Tracking &&
+                    plane.alignment == PlaneAlignment.HorizontalUp &&
+                    plane.size.x > 0.5f &&
+                    plane.size.y > 0.5f)
+                {
+                    SpawnNotes(plane);
+                    NotesSpawned = true;
+                    break;
+                }
             }
         }
     }
 
-}
-        void TouchObjectpositioning()
-     {
-        if (Input.touchCount > 0)
+    void SpawnNotes(ARPlane plane)
+    {
+        for (int i = 0; i < NumberOfNotes; i++)
         {
-            if(Input.GetTouch)
-        }
-        
-    }
+            Vector3 localPosition = plane.center;
 
+            localPosition.x += Random.Range(
+                -SpawnRadius, SpawnRadius);
+
+            localPosition.z += Random.Range(
+                -SpawnRadius, SpawnRadius);
+
+            localPosition.y += Random.Range(
+                MinHeight, MaxHeight);
+
+            Vector3 worldPosition =
+                plane.transform.TransformPoint(localPosition);
+
+            GameObject note = Instantiate(
+                PrefabToInstantiate,
+                worldPosition,
+                Quaternion.identity
+            );
+
+            note.transform.rotation =
+                Quaternion.LookRotation(
+                    Camera.main.transform.position - worldPosition
+                );
+        }
+    }
+}

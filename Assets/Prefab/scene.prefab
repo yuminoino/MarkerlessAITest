@@ -130,6 +130,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a93be5b90af3f6d46827cc50fcfe0927, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NoteInteraction
-  NoteText: Hai trovato un frammento di conoscenza!
+  NoteText: Hai trovato qualcosa!
   DialoguePanel: {fileID: 0}
   DialogueText: {fileID: 0}

@@ -709,7 +709,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ARManager
   PlaneManager: {fileID: 1405827227}
-  PrefabToInstantiate: {fileID: 0}
+  PrefabToInstantiate: {fileID: 4248852256636031744, guid: 7c5cd0fd4f6133c49a6555ff08061453, type: 3}
   ShowPlanes: 1
   CreatedPlanes: []
   NumberOfNotes: 5

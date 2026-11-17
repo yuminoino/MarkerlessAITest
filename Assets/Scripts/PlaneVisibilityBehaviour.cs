@@ -19,11 +19,8 @@ public class PlaneVisibilityBehaviour : MonoBehaviour
         if (ARManager.Singleton == null)
             return;
 
-        if (MyMeshRenderer != null)
-            MyMeshRenderer.enabled = ARManager.Singleton.ShowPlanes;
-
-        if (MyLineRenderer != null)
-            MyLineRenderer.enabled = ARManager.Singleton.ShowPlanes;
+        MyMeshRenderer.enabled = ARManager.Singleton.ShowPlanes;
+        MyLineRenderer.enabled = ARManager.Singleton.ShowPlanes;
     }
 
     private void OnDestroy()

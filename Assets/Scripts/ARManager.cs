@@ -1,6 +1,7 @@
 
-using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
@@ -10,6 +11,10 @@ public class ARManager : MonoBehaviour
 
     public ARPlaneManager PlaneManager;
     public GameObject PrefabToInstantiate;
+    public bool ShowPlanes = true;
+
+    public List<PlaneVisibilityBehaviour> CreatedPlanes =
+        new List<PlaneVisibilityBehaviour>();
 
     public int NumberOfNotes = 5;
 

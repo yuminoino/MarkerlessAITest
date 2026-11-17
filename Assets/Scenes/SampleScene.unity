@@ -673,6 +673,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 816927679}
+  - component: {fileID: 816927680}
   m_Layer: 0
   m_Name: ARManager
   m_TagString: Untagged
@@ -695,6 +696,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &816927680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816927678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 089a06a0a74bff94d918ea1bcafb38e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ARManager
+  PlaneManager: {fileID: 1405827227}
+  PrefabToInstantiate: {fileID: 0}
+  ShowPlanes: 1
+  CreatedPlanes: []
+  NumberOfNotes: 5
+  SpawnRadius: 2
+  MinHeight: 0.5
+  MaxHeight: 1.5
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -827,7 +848,7 @@ MonoBehaviour:
   <trackablesChanged>k__BackingField:
     m_PersistentCalls:
       m_Calls: []
-  m_PlanePrefab: {fileID: 0}
+  m_PlanePrefab: {fileID: 2035521072}
   m_DetectionMode: 3
 --- !u!1 &1488298246
 GameObject:
@@ -936,6 +957,7 @@ GameObject:
   - component: {fileID: 2035521075}
   - component: {fileID: 2035521074}
   - component: {fileID: 2035521073}
+  - component: {fileID: 2035521080}
   m_Layer: 0
   m_Name: AR Default Plane
   m_TagString: Untagged
@@ -1175,6 +1197,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2035521080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2035521072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ab7569be4f411240ae6f7a4876cd9a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlaneVisibilityBehaviour
+  MyMeshRenderer: {fileID: 0}
+  MyLineRenderer: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

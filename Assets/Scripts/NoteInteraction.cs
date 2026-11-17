@@ -5,7 +5,7 @@ using TMPro;
 public class NoteInteraction : MonoBehaviour
 {
     [TextArea(2, 5)]
-    public string NoteText = "Hai trovato un frammento di conoscenza!";
+    public string NoteText = "Hai trovato qualcosa!";
 
     public GameObject DialoguePanel;
     public TextMeshProUGUI DialogueText;
